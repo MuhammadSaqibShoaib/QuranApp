@@ -11,10 +11,13 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class List extends AppCompatActivity {
-    String[] surah_list;
-    String[] para_list;
+    String[] eng_surah_list;
+    String[] arabic_surah_list;
+    String[] eng_para_list;
+    String[] arabic_para_list;
     ListView list;
-    ArrayAdapter<String> adapter;
+
+    //ArrayAdapter<String> adapter;
     QDH qdh = new QDH();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +26,29 @@ public class List extends AppCompatActivity {
         getSupportActionBar().hide();
 
         // getting list of parah
-
-        para_list = qdh.ParahName;
-        Log.d("Loaded", para_list[0]);
+        arabic_para_list = qdh.ParahName;
+        eng_para_list = qdh.englishParahName;
+        Log.d("Loaded", arabic_para_list[0]);
+        //getting lists of surah
+        eng_surah_list = qdh.englishSurahNames;
+        arabic_surah_list = qdh.urduSurahNames;
+        Log.d("Loaded", arabic_surah_list[0]);
+        //Log.d("Loaded", arabic_para_list[0]);
 
         //getting list view
         list = findViewById(R.id.list);
         //making adapter active
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, para_list);
-        list.setAdapter(adapter);
+
+        CustomAdaptor adaptor = new CustomAdaptor(getApplicationContext(),eng_para_list,arabic_para_list);
+        list.setAdapter(adaptor);
+    }
+
+    public void OnClickParah(){
+        CustomAdaptor adaptor = new CustomAdaptor(getApplicationContext(),eng_para_list,arabic_para_list);
+        list.setAdapter(adaptor);
+    }
+    public void OnClickSurah(){
+        CustomAdaptor adaptor = new CustomAdaptor(getApplicationContext(),eng_surah_list,arabic_surah_list);
+        list.setAdapter(adaptor);
     }
 }
