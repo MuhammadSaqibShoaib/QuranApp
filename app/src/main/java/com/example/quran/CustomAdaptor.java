@@ -23,6 +23,11 @@ public class CustomAdaptor extends BaseAdapter {
         Log.d("Loaded", "CustomAdaptor: "+this.eng_names[0]);
         inflater = LayoutInflater.from(context);
     }
+
+    public void SetData(String[] eng_names, String[] arabic_names){
+        this.eng_names = eng_names;
+        this.arabic_names = arabic_names;
+    }
     @Override
     public int getCount() {
         return eng_names.length;
