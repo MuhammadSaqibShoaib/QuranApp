@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Quran</string>
+    <string name="para_btn">Parah</string>
+    <string name="surah_btn">Surah</string>
 </resources>
