@@ -2,6 +2,7 @@ package com.example.quran;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -82,8 +83,9 @@ public class List extends AppCompatActivity {
                         next = qdh.getParahStart(i + 1) - 1;
                     }
                     String[] data = quranData.GetData(curr, next);
-                    int len = data.length;
-                    Log.d("Loaded", data[len-1]);
+                    Intent intent = new Intent(List.this, MainActivity.class);
+                    intent.putExtra("data", data);
+                    startActivity(intent);
                 }
 
                 // Show according to surah
