@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     String[] data;
     ListView listView;
+    VerseAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
         // taking refrence of listview
         listView = findViewById(R.id.MainList);
+
+        adapter = new VerseAdapter(getApplicationContext(),data);
+        listView.setAdapter(adapter);
 
 
     }

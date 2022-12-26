@@ -73,27 +73,31 @@ public class List extends AppCompatActivity {
                 int size = adapterView.getCount();
                 // Show according to para
                 if (size == 30) {
-                    int curr,next;
-                    if (i == 29){
-                        curr = qdh.getParahStart(i) - 1;
-                        next = 6348;
-                    }
-                    else{
-                        curr = qdh.getParahStart(i) - 1;
-                        next = qdh.getParahStart(i + 1) - 1;
-                    }
-                    String[] data = quranData.GetData(curr, next);
-                    Intent intent = new Intent(List.this, MainActivity.class);
-                    intent.putExtra("data", data);
-                    startActivity(intent);
+                    GetParahData(i);
                 }
 
                 // Show according to surah
                 else if (size == 114){
-
+                    GetSurahData(i);
                 }
             }
         });
+    }
+
+    private void GetSurahData(int i) {
+        int curr,next;
+        if (i == 113){
+            curr = qdh.getSurahStart(i) - 1;
+            next = 6348;
+        }
+        else{
+            curr = qdh.getSurahStart(i) - 1;
+            next = qdh.getSurahStart(i + 1) - 1;
+        }
+        String[] data = quranData.GetData(curr, next);
+        Intent intent = new Intent(List.this, MainActivity.class);
+        intent.putExtra("data", data);
+        startActivity(intent);
     }
 
     public void OnClickParah(){
@@ -105,5 +109,21 @@ public class List extends AppCompatActivity {
         Log.d("Loaded", "OnClickSurah: ");
         adaptor.SetData(eng_surah_list,arabic_surah_list);
         adaptor.notifyDataSetChanged();
+    }
+
+    public void GetParahData(int i){
+        int curr,next;
+        if (i == 29){
+            curr = qdh.getParahStart(i) - 1;
+            next = 6348;
+        }
+        else{
+            curr = qdh.getParahStart(i) - 1;
+            next = qdh.getParahStart(i + 1) - 1;
+        }
+        String[] data = quranData.GetData(curr, next);
+        Intent intent = new Intent(List.this, MainActivity.class);
+        intent.putExtra("data", data);
+        startActivity(intent);
     }
 }
