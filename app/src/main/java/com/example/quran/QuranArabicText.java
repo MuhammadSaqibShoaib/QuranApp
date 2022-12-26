@@ -1,4 +1,7 @@
 package com.example.quran;
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -6361,11 +6364,14 @@ public class QuranArabicText {
     // String[] subset = Arrays.copyOfRange(QuranArabicText, 10, 20);
 
     public String[] GetData(int StartIndex, int EndIndex) {
-        List<String> listTemp = null;
+        Log.d("Loaded", "In get data, startindex : "+StartIndex+": End Index: "+EndIndex);
+        Log.d("Loaded", "GetData: "+QuranArabicText.length);
+        List<String> listTemp = new ArrayList<>();
 
         for (int i = StartIndex; i < EndIndex; i++) {
             listTemp.add(QuranArabicText[i].toString());
         }
+        Log.d("Loaded", listTemp.get(0));
         String[] list = listTemp.toArray(new String[]{});
 
         return list;

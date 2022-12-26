@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -22,6 +23,7 @@ public class List extends AppCompatActivity {
     Button para_btn, surah_btn;
     //ArrayAdapter<String> adapter;
     QDH qdh = new QDH();
+    QuranArabicText quranData = new QuranArabicText();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,35 @@ public class List extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 OnClickSurah();
+            }
+        });
+
+
+        // List on Click listner
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int size = adapterView.getCount();
+                // Show according to para
+                if (size == 30) {
+                    int curr,next;
+                    if (i == 29){
+                        curr = qdh.getParahStart(i) - 1;
+                        next = 6348;
+                    }
+                    else{
+                        curr = qdh.getParahStart(i) - 1;
+                        next = qdh.getParahStart(i + 1) - 1;
+                    }
+                    String[] data = quranData.GetData(curr, next);
+                    int len = data.length;
+                    Log.d("Loaded", data[len-1]);
+                }
+
+                // Show according to surah
+                else if (size == 114){
+
+                }
             }
         });
     }
