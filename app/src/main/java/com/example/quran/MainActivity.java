@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new VerseAdapter(getApplicationContext(),data);
         listView.setAdapter(adapter);
-
+        listView.smoothScrollToPosition(5);
 
     }
 }

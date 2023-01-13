@@ -3,6 +3,7 @@ package com.example.quran;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -111,6 +112,8 @@ public class List extends AppCompatActivity {
         adaptor.notifyDataSetChanged();
     }
 
+
+
     public void GetParahData(int i){
         int curr,next;
         if (i == 29){
@@ -125,5 +128,11 @@ public class List extends AppCompatActivity {
         Intent intent = new Intent(List.this, MainActivity.class);
         intent.putExtra("data", data);
         startActivity(intent);
+    }
+
+    public void OnClickGithub(View view) {
+        Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://github.com/MuhammadSaqibShoaib/QuranApp"));
+        startActivity(webIntent);
     }
 }
