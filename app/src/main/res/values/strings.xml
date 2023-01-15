@@ -3,4 +3,5 @@
     <string name="para_btn">Parah</string>
     <string name="surah_btn">Surah</string>
     <string name="github_btn">Github</string>
+    <string name="verse_error">Verse not found</string>
 </resources>
