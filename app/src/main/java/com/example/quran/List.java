@@ -98,6 +98,7 @@ public class List extends AppCompatActivity {
         String[] data = quranData.GetData(curr, next);
         Intent intent = new Intent(List.this, MainActivity.class);
         intent.putExtra("data", data);
+        intent.putExtra("heading","سورۃ: "+arabic_surah_list[i]);
         startActivity(intent);
     }
 
@@ -127,6 +128,7 @@ public class List extends AppCompatActivity {
         String[] data = quranData.GetData(curr, next);
         Intent intent = new Intent(List.this, MainActivity.class);
         intent.putExtra("data", data);
+        intent.putExtra("heading","پارہ:"+arabic_para_list[i]);
         startActivity(intent);
     }
 

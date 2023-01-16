@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     String[] data;
     ListView listView;
 
+    TextView txt_heading;
     EditText search_txt;
     Button searchBtn;
 
@@ -26,13 +28,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        txt_heading = findViewById(R.id.txt_heading);
         search_txt = findViewById(R.id.num_txt);
         searchBtn = findViewById(R.id.search_btn);
-
 
         // getting data from previous activity
         Intent intent = getIntent();
         data = intent.getStringArrayExtra("data");
+        txt_heading.setText(intent.getStringExtra("heading"));
 
         // taking refrence of listview
         listView = findViewById(R.id.MainList);
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 int position = Integer.parseInt(txt);
                 Log.d("Loaded", "Position: "+position);
                 if (position > 0 && position < data.length)
-                    listView.smoothScrollToPosition(position);
+                    listView.setSelection(position);
                 else{
                     Toast.makeText(getApplicationContext(),R.string.verse_error,Toast.LENGTH_SHORT).show();
                 }
